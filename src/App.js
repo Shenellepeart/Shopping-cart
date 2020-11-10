@@ -50,6 +50,23 @@ function App() {
     }
   };
 
+  const addToCart = (product) => {
+    let notInCart = true;
+    const cartItems = inventoryDetails.cartItems.map((item) => {
+      if (item._id === product._id) {
+        notInCart = false;
+        return {
+          ...item, 
+          count: item.count +1
+        }
+      }
+      return item;
+    });
+    if (notInCart) {
+      cartItems.push({ ...product, count: 1 });
+    }
+    setInventoryDetails({...inventoryDetails, cartItems})
+  };
   return (
     <div className="grid-container">
       <header>
