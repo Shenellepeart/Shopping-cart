@@ -3,21 +3,22 @@ import React, { useState } from "react";
 import data from "./data.json";
 import Products from "./components/Products";
 import Filter from "./components/Filter";
+import Cart from "./components/Cart";
 
 function App() {
   const [inventoryDetails, setInventoryDetails] = useState({
     products: data.products,
+    cartItems: [],
     size: "",
     sort: "",
   });
 
   const sortProducts = (event) => {
-    // console.log(event.target.value);
-    const sort = event.target.value
+    const sort = event.target.value;
     setInventoryDetails((inventoryDetails) => ({
+      ...inventoryDetails,
       sort: sort,
-      products: inventoryDetails.products
-        .slice()
+      products: [...inventoryDetails.products]
         .sort((a, b) =>
           sort === "lowest"
             ? a.price > b.price
@@ -37,11 +38,13 @@ function App() {
   const filterProducts = (event) => {
     if (event.target.value === "") {
       setInventoryDetails({
+        ...inventoryDetails,
         size: event.target.value,
         product: data.products,
       });
     } else {
       setInventoryDetails({
+        ...inventoryDetails,
         size: event.target.value,
         products: data.products.filter(
           (product) => product.availableSizes.indexOf(event.target.value) >= 0
@@ -67,6 +70,7 @@ function App() {
     }
     setInventoryDetails({...inventoryDetails, cartItems})
   };
+
   return (
     <div className="grid-container">
       <header>
@@ -82,9 +86,12 @@ function App() {
               filterProducts={filterProducts}
               sortProducts={sortProducts}
             />
-            <Products inventory={inventoryDetails} />
+            <Products inventory={inventoryDetails} addToCart={addToCart}/>
           </div>
-          <div className="sidebar">Cart Items</div>
+          <div className="sidebar">
+            <Cart cartItems={inventoryDetails.cartItems}/>
+
+          </div>
         </div>
       </main>
       <footer>All rights reserved.</footer>
