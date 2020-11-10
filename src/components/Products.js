@@ -6,7 +6,6 @@ const Products = ({ inventory, addToCart }) => {
   return (
     <div>
       <ul className="products">
-        {console.log(inventory.products)}
         {inventory?.products?.map((product) => (
           <li key={product._id}>
             <div className="product">
