@@ -16,7 +16,7 @@ const Filter = ({ count, sort, size,  sortProducts, filterProducts }) => {
       <div className="filter-size">
         Filter {" "}
         <select value={size} onChange={filterProducts}>
-          <option value="">All</option>
+          <option value="all">All</option>
           <option value="XS">XS</option>
           <option value="S">S</option>
           <option value="M">M</option>
