@@ -71,6 +71,12 @@ function App() {
     setInventoryDetails({...inventoryDetails, cartItems})
   };
 
+  const removeFromCart = (product) =>{
+    const cartItems= inventoryDetails.cartItems.filter((item) => (item._id !== product._id)) 
+
+    setInventoryDetails({...inventoryDetails, cartItems})
+  }
+
   return (
     <div className="grid-container">
       <header>
@@ -89,7 +95,7 @@ function App() {
             <Products inventory={inventoryDetails} addToCart={addToCart}/>
           </div>
           <div className="sidebar">
-            <Cart cartItems={inventoryDetails.cartItems}/>
+            <Cart cartItems={inventoryDetails.cartItems} removeFromCart={removeFromCart}/>
 
           </div>
         </div>
