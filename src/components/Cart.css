@@ -18,21 +18,36 @@
   width: 5rem;
 }
 
-.cart-items li {
+/* .cart-items li {
   display: flex;
-}
+  background-color: purple;
+
+
+} */
 
 .cart-items li div {
   padding: 0.5rem;
+
 }
 
-.cart-items li div div:last-child {
-  flex: 1;
-  width: 100%;
+.cart-wrapper{
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
+
+.item-info {
+  display: flex;
+flex-direction: column;
+justify-content: center;
+}
+.price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
 .total {
   display: flex;
   width: 100%;
