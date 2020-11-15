@@ -37,23 +37,7 @@ function App() {
     }));
   };
 
-  // const filterProducts = (event) => {
-  //   if (event.target.value === "") {
-  //     setInventoryDetails({
-  //       ...inventoryDetails,
-  //       size: event.target.value,
-  //       product: data.products,
-  //     });
-  //   } else {
-  //     setInventoryDetails({
-  //       ...inventoryDetails,
-  //       size: event.target.value,
-  //       products: data.products.filter(
-  //         (product) => product.availableSizes.indexOf(event.target.value) >= 0
-  //       ),
-  //     });
-  //   }
-  // };
+
 
   // const addToCart = (product) => {
   //   let notInCart = true;
