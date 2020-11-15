@@ -16,7 +16,7 @@ const Products = ({ products, addToCart, fetchProducts }) => {
   ) : (
     <div>
       <ul className="products">
-        {products?.items?.map((item) => (
+        {products?.filteredItems?.map((item) => (
           <li key={item._id}>
             <div className="product">
               <a href={`#${item._id}`}>
