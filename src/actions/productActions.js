@@ -3,6 +3,7 @@ import {
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILURE,
   FILTER_PRODUCTS_BY_SIZE,
+  SORT_PRODUCTS_BY_PRICE,
   ADD_TO_CART,
   REMOVE_TO_CART,
 } from "./types";
@@ -45,6 +46,29 @@ return dispatch({
   payload: {
     size: size,
     items: size === "" ? items : items.filter(item => item.availableSizes.indexOf(size.toUpperCase()) >= 0)
+  }
+})
+}
+export const sortProducts = (items, sort) => (dispatch)=> {
+
+ let products =  items.sort((a, b) =>
+  sort === "lowest"
+    ? a.price > b.price
+      ? 1
+      : -1
+    : sort === "highest"
+    ? a.price < b.price
+      ? 1
+      : -1
+    : a._id > b._id
+    ? 1
+    : -1
+)
+  return dispatch({
+  type: SORT_PRODUCTS_BY_PRICE,
+  payload: {
+    sort: sort,
+    items: products
   }
 })
 }
