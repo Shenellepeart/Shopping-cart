@@ -13,6 +13,8 @@ function App() {
     sort: "",
   });
 
+
+
   const sortProducts = (event) => {
     const sort = event.target.value;
     setInventoryDetails((inventoryDetails) => ({
