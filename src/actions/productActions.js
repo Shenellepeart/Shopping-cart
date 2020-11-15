@@ -31,8 +31,8 @@ export const fetchProductsFailure = (error) => {
 export const fetchProducts = () => (dispatch) => {
     dispatch(fetchProductsRequest)
   axios.get("http://localhost:8000/products").then((response) => {
-    const items = response.data
-    dispatch(fetchProductsSuccess(items))
+    const filteredItems = response.data
+    dispatch(fetchProductsSuccess(filteredItems))
     }).catch(error =>{
         const errorMsg = error.message
         dispatch(fetchProductsFailure(errorMsg))
