@@ -20,6 +20,7 @@ const productReducer = (state = initialState, action) => {
             return{
                 ...state,
                 items: action.payload,
+                filteredItems: action.payload
             }
         case FETCH_PRODUCTS_FAILURE:
             return{
@@ -29,7 +30,7 @@ const productReducer = (state = initialState, action) => {
         case FILTER_PRODUCTS_BY_SIZE:
             return{
                 ...state,
-                filteredItems: action.payload.items, 
+                filteredItems: action.payload.items,
                 size: action.payload.size
             }
         default:
