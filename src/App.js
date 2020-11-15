@@ -1,4 +1,4 @@
-// feature-1 change
+
 import React, { useState } from "react";
 import data from "./data.json";
 import Products from "./components/Products";
@@ -14,28 +14,6 @@ function App() {
   });
 
 
-
-  const sortProducts = (event) => {
-    const sort = event.target.value;
-    setInventoryDetails((inventoryDetails) => ({
-      ...inventoryDetails,
-      sort: sort,
-      products: [...inventoryDetails.products]
-        .sort((a, b) =>
-          sort === "lowest"
-            ? a.price > b.price
-              ? 1
-              : -1
-            : sort === "highest"
-            ? a.price < b.price
-              ? 1
-              : -1
-            : a._id > b._id
-            ? 1
-            : -1
-        ),
-    }));
-  };
 
 
 
@@ -73,8 +51,6 @@ function App() {
           <div className="main">
             <Filter
               count={inventoryDetails.products.length}
-              sort={inventoryDetails.sort}
-              sortProducts={sortProducts}
             />
             <Products 
             // addToCart={addToCart}
