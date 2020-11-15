@@ -49,15 +49,16 @@ function App() {
       <main>
         <div className="content">
           <div className="main">
-            <Filter
-              count={inventoryDetails.products.length}
-            />
+            <Filter/>
             <Products 
             // addToCart={addToCart}
             />
           </div>
           <div className="sidebar">
-            <Cart cartItems={inventoryDetails.cartItems} removeFromCart={removeFromCart}/>
+            <Cart 
+            cartItems={inventoryDetails.cartItems} 
+            removeFromCart={removeFromCart}
+            />
 
           </div>
         </div>

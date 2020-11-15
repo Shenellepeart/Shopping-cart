@@ -4,7 +4,6 @@ import { filterProductsBySize, sortProducts } from "../actions/productActions";
 import "./Filter.css";
 
 const Filter = ({
-  count,
   sort,
   size,
   sortProducts,
@@ -14,7 +13,7 @@ const Filter = ({
 }) => {
   return (
     <div className="filter">
-      <div className="filter-result">{count} Products</div>
+      <div className="filter-result">{filteredProducts.length} Products</div>
       <div className="filter-sort">
         Order{" "}
         <select value={sort} onChange={(e)=>sortProducts(filteredProducts, e.target.value)}>
