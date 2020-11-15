@@ -37,41 +37,41 @@ function App() {
     }));
   };
 
-  const filterProducts = (event) => {
-    if (event.target.value === "") {
-      setInventoryDetails({
-        ...inventoryDetails,
-        size: event.target.value,
-        product: data.products,
-      });
-    } else {
-      setInventoryDetails({
-        ...inventoryDetails,
-        size: event.target.value,
-        products: data.products.filter(
-          (product) => product.availableSizes.indexOf(event.target.value) >= 0
-        ),
-      });
-    }
-  };
+  // const filterProducts = (event) => {
+  //   if (event.target.value === "") {
+  //     setInventoryDetails({
+  //       ...inventoryDetails,
+  //       size: event.target.value,
+  //       product: data.products,
+  //     });
+  //   } else {
+  //     setInventoryDetails({
+  //       ...inventoryDetails,
+  //       size: event.target.value,
+  //       products: data.products.filter(
+  //         (product) => product.availableSizes.indexOf(event.target.value) >= 0
+  //       ),
+  //     });
+  //   }
+  // };
 
-  const addToCart = (product) => {
-    let notInCart = true;
-    const cartItems = inventoryDetails.cartItems.map((item) => {
-      if (item._id === product._id) {
-        notInCart = false;
-        return {
-          ...item, 
-          count: item.count +1
-        }
-      }
-      return item;
-    });
-    if (notInCart) {
-      cartItems.push({ ...product, count: 1 });
-    }
-    setInventoryDetails({...inventoryDetails, cartItems})
-  };
+  // const addToCart = (product) => {
+  //   let notInCart = true;
+  //   const cartItems = inventoryDetails.cartItems.map((item) => {
+  //     if (item._id === product._id) {
+  //       notInCart = false;
+  //       return {
+  //         ...item, 
+  //         count: item.count +1
+  //       }
+  //     }
+  //     return item;
+  //   });
+  //   if (notInCart) {
+  //     cartItems.push({ ...product, count: 1 });
+  //   }
+  //   setInventoryDetails({...inventoryDetails, cartItems})
+  // };
 
   const removeFromCart = (product) =>{
     const cartItems= inventoryDetails.cartItems.filter((item) => (item._id !== product._id)) 
@@ -89,12 +89,12 @@ function App() {
           <div className="main">
             <Filter
               count={inventoryDetails.products.length}
-              size={inventoryDetails.size}
               sort={inventoryDetails.sort}
-              filterProducts={filterProducts}
               sortProducts={sortProducts}
             />
-            <Products inventory={inventoryDetails} addToCart={addToCart}/>
+            <Products 
+            // addToCart={addToCart}
+            />
           </div>
           <div className="sidebar">
             <Cart cartItems={inventoryDetails.cartItems} removeFromCart={removeFromCart}/>
