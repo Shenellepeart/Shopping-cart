@@ -17,19 +17,22 @@ const Cart = ({ cartItems, removeFromCart }) => {
           <ul className="cart-items">
             {cartItems.map((item) => (
               <li key={item._id}>
-                <div>
-                  <img src={item.image} alt={item.title} />
-                </div>
-                <div>
-                  <div>{item.title}</div>
-                  <div className="price">
-                    {formatCurrency(item.price)} X {item.count}
-                    <button
-                      className="button"
-                      onClick={() => removeFromCart(item)}
-                    >
-                      Remove
-                    </button>
+                <div className="cart-wrapper">
+                  <div className="image-wrapper">
+                    <img src={item.image} alt={item.title} />
+                  </div>
+
+                  <div className="item-info">
+                    <div className="title">{item.title}</div>
+                    <div className="price">
+                      {formatCurrency(item.price)} X {item.count}
+                      <button
+                        className="button"
+                        onClick={() => removeFromCart(item)}
+                      >
+                        Remove
+                      </button>
+                    </div>
                   </div>
                 </div>
               </li>
@@ -48,7 +51,9 @@ const Cart = ({ cartItems, removeFromCart }) => {
             </div>
             <button className="button primary">Proceed</button>
           </div>
-        ): ''}
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
